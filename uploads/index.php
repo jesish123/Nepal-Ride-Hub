@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-<?php 
-include 'includes/header.php'; 
-=======
 <?php
 include 'includes/header.php';
->>>>>>> origin/seraj
 require_once 'includes/db_connect.php';
 
 try {
@@ -14,8 +9,6 @@ try {
     $featuredVehicles = [];
 }
 ?>
-<<<<<<< HEAD
-=======
 
 <style>
     /* Reset and Base Overrides for Mockup */
@@ -379,5 +372,4 @@ try {
 
 </script>
 
->>>>>>> origin/seraj
 <?php include 'includes/footer.php'; ?>

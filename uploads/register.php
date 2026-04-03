@@ -98,11 +98,7 @@ body::before {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-<<<<<<<< HEAD:uploads/register.php
     margin-bottom: 1.2rem;
-========
-    margin-bottom: 0.8rem;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
 }
 .card-logo .icon {
     width: 28px;
@@ -125,19 +121,11 @@ body::before {
     font-weight: 800;
     color: #111;
     text-align: center;
-<<<<<<<< HEAD:uploads/register.php
     margin-bottom: 1rem;
     margin-top: 0;
 }
 
 .auth-form .form-group { margin-bottom: 1rem; }
-========
-    margin-bottom: 0.8rem;
-    margin-top: 0;
-}
-
-.auth-form .form-group { margin-bottom: 0.8rem; }
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
 .auth-form label {
     display: block;
     font-weight: 700;
@@ -172,11 +160,7 @@ body::before {
 }
 .input-with-icon input {
     width: 100%;
-<<<<<<<< HEAD:uploads/register.php
     padding: 0.7rem 1rem 0.7rem 2.4rem;
-========
-    padding: 0.75rem 1rem 0.75rem 2.4rem;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     border: 1.5px solid #eee;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -198,11 +182,7 @@ body::before {
     border-radius: 8px;
     padding: 0.8rem;
     width: 100%;
-<<<<<<<< HEAD:uploads/register.php
     margin: 1rem 0;
-========
-    margin: 0.8rem 0;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     display: block;
     font-size: 0.95rem;
     font-weight: 700;
@@ -227,54 +207,9 @@ body::before {
     font-weight: 700;
 }
 .auth-links-group a:hover { text-decoration: underline; }
-<<<<<<<< HEAD:uploads/register.php
 
 @media (max-width: 900px) {
     body { height: auto; overflow: auto; min-width: 100vh; }
-========
-.auth-links-group p { margin: 0.4rem 0; }
-
-.divider {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #999;
-    margin: 0.8rem 0 !important;
-}
-
-.auth-social {
-    margin-top: 0.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-.btn-social {
-    background-color: #fff;
-    color: #444;
-    border: 1.5px solid #eee;
-    border-radius: 8px;
-    padding: 0.7rem;
-    width: 100%;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    font-family: 'Inter', sans-serif;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-.btn-social:hover { 
-    background-color: #f9f9f9;
-    border-color: #ddd;
-    transform: translateY(-1px);
-}
-.btn-social img { width: 16px; height: 16px; }
-
-@media (max-width: 900px) {
-    body { height: auto; overflow: auto; min-height: 100vh; }
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     .auth-premium-wrapper {
         flex-direction: column;
         justify-content: center;
@@ -336,7 +271,6 @@ body::before {
                 <label for="password">Password:</label>
                 <div class="input-with-icon">
                     <i class="fa-solid fa-lock"></i>
-<<<<<<<< HEAD:uploads/register.php
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fa-regular fa-eye toggle-password"></i>
                 </div>
@@ -348,93 +282,14 @@ body::before {
                     <input type="password" id="password_confirm" name="password_confirm" placeholder="Password" required>
                     <i class="fa-regular fa-eye toggle-password"></i>
                 </div>
-========
-                    <input type="password" id="password" name="password" placeholder="••••••••" required>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                </div>
-            </div>
-            
-            <div style="text-align: right; margin-bottom: 0.5rem;">
-                <a href="forgot_password.php" style="color: #3561ff; font-weight: 700; text-decoration: none; font-size: 0.75rem;">Forgot Password?</a>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
             </div>
             <button type="submit" class="btn-auth-submit" id="registerBtn">Sign up</button>
         </form>
         
-<<<<<<<< HEAD:uploads/register.php
         <div class="auth-links-group" style="margin-top: 0.5rem;">
             <p>Already have an account? <a href="login.php">Log in</a></p>
-========
-        <div class="divider"><span>OR CONTINUE WITH</span></div>
-
-        <div class="auth-social">
-            <a href="api/oauth_google.php?action=login" class="btn-social" style="background: #fdfdfd; border-color: #eee;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"> 
-                <span style="font-weight: 700;">Google Account</span>
-            </a>
-            <a href="api/oauth_facebook.php?action=login" class="btn-social" style="background: #fdfdfd; border-color: #eee;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook"> 
-                <span style="font-weight: 700;">Facebook Account</span>
-            </a>
-        </div>
-
-        <div class="auth-links-group" style="margin-top: 1rem;">
-            <p>Don't have an account? <a href="register.php">Create Account</a></p>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
         </div>
     </div>
 </div>
 
-<<<<<<<< HEAD:uploads/register.php
 <?php include 'includes/footer.php'; ?>
-========
-<script>
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    fetch('api/auth.php?action=login', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        const loginAlert = document.getElementById('loginAlert');
-        loginAlert.style.display = 'block';
-        if (data.success) {
-            loginAlert.className = 'alert alert-success';
-            loginAlert.textContent = data.message;
-            setTimeout(() => {
-                window.location.href = data.redirect;
-            }, 1000);
-        } else {
-            loginAlert.className = 'alert alert-danger';
-            loginAlert.textContent = data.message;
-        }
-    });
-});
-
-// Password Visibility Toggle using Event Delegation
-document.addEventListener('click', function(e) {
-    const toggleIcon = e.target.closest('.toggle-password');
-    if (toggleIcon) {
-        const wrapper = toggleIcon.closest('.input-with-icon');
-        if (wrapper) {
-            const input = wrapper.querySelector('input');
-            if (input) {
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    toggleIcon.classList.remove('fa-eye');
-                    toggleIcon.classList.add('fa-eye-slash');
-                } else {
-                    input.type = 'password';
-                    toggleIcon.classList.remove('fa-eye-slash');
-                    toggleIcon.classList.add('fa-eye');
-                }
-            }
-        }
-    }
-});
-</script>
-</body>
-</html>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php

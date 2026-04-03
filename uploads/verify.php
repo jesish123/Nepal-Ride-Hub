@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<?php include 'includes/header.php'; ?>
-<?php 
-// Only allow access if temporary session is set
-if (!isset($_SESSION['temp_user_id']) || !isset($_SESSION['verification_code'])) {
-    header("Location: login.php");
-    exit;
-}
-?>
-<?php include 'includes/footer.php'; ?>
-=======
 <section class="auth-section">
     <div class="container auth-container">
         <div class="auth-card">
@@ -37,4 +26,3 @@ if (!isset($_SESSION['temp_user_id']) || !isset($_SESSION['verification_code']))
         </div>
     </div>
 </section>
->>>>>>> origin/Suraj-K.Sah

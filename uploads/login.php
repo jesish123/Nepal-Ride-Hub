@@ -3,9 +3,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 include 'includes/header.php'; 
-<<<<<<< HEAD
-?>
-=======
 ?>
 <style>
 /* Hide the default navbar and footer */
@@ -92,7 +89,6 @@ body::before {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
 }
 
 /* Card Logo */
@@ -101,11 +97,7 @@ body::before {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-<<<<<<<< HEAD:uploads/register.php
-    margin-bottom: 1.2rem;
-========
     margin-bottom: 0.8rem;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
 }
 .card-logo .icon {
     width: 28px;
@@ -128,19 +120,11 @@ body::before {
     font-weight: 800;
     color: #111;
     text-align: center;
-<<<<<<<< HEAD:uploads/register.php
-    margin-bottom: 1rem;
-    margin-top: 0;
-}
-
-.auth-form .form-group { margin-bottom: 1rem; }
-========
     margin-bottom: 0.8rem;
     margin-top: 0;
 }
 
 .auth-form .form-group { margin-bottom: 0.8rem; }
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
 .auth-form label {
     display: block;
     font-weight: 700;
@@ -175,11 +159,7 @@ body::before {
 }
 .input-with-icon input {
     width: 100%;
-<<<<<<<< HEAD:uploads/register.php
-    padding: 0.7rem 1rem 0.7rem 2.4rem;
-========
     padding: 0.75rem 1rem 0.75rem 2.4rem;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     border: 1.5px solid #eee;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -201,11 +181,7 @@ body::before {
     border-radius: 8px;
     padding: 0.8rem;
     width: 100%;
-<<<<<<<< HEAD:uploads/register.php
-    margin: 1rem 0;
-========
     margin: 0.8rem 0;
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     display: block;
     font-size: 0.95rem;
     font-weight: 700;
@@ -230,11 +206,6 @@ body::before {
     font-weight: 700;
 }
 .auth-links-group a:hover { text-decoration: underline; }
-<<<<<<<< HEAD:uploads/register.php
-
-@media (max-width: 900px) {
-    body { height: auto; overflow: auto; min-width: 100vh; }
-========
 .auth-links-group p { margin: 0.4rem 0; }
 
 .divider {
@@ -277,7 +248,6 @@ body::before {
 
 @media (max-width: 900px) {
     body { height: auto; overflow: auto; min-height: 100vh; }
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
     .auth-premium-wrapper {
         flex-direction: column;
         justify-content: center;
@@ -314,44 +284,21 @@ body::before {
             </div>
         </div>
         
-        <h2>Sign up</h2>
-        <div id="registerAlert" class="alert" style="display: none; font-size: 0.85rem; margin-bottom: 1rem; padding: 0.8rem;"></div>
+        <h2>Login</h2>
+        <div id="loginAlert" class="alert" style="display: none; font-size: 0.85rem; margin-bottom: 1rem; padding: 0.8rem;"></div>
         
-        <form id="registerForm" class="auth-form">
-            <!-- Hidden field to satisfy validation transparently -->
-            <input type="hidden" name="phone" id="phone" value="0000000000">
-            
+        <form id="loginForm" class="auth-form">
             <div class="form-group">
-                <label for="name">Username:</label>
+                <label for="email">Username / Email:</label>
                 <div class="input-with-icon">
                     <i class="fa-regular fa-user"></i>
-                    <input type="text" id="name" name="name" placeholder="Username" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <div class="input-with-icon">
-                    <i class="fa-regular fa-envelope"></i>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="text" id="email" name="email" placeholder="Enter username or email" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
                 <div class="input-with-icon">
                     <i class="fa-solid fa-lock"></i>
-<<<<<<<< HEAD:uploads/register.php
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password_confirm">Confirm Password:</label>
-                <div class="input-with-icon">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password_confirm" name="password_confirm" placeholder="Password" required>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                </div>
-========
                     <input type="password" id="password" name="password" placeholder="••••••••" required>
                     <i class="fa-regular fa-eye toggle-password"></i>
                 </div>
@@ -359,15 +306,11 @@ body::before {
             
             <div style="text-align: right; margin-bottom: 0.5rem;">
                 <a href="forgot_password.php" style="color: #3561ff; font-weight: 700; text-decoration: none; font-size: 0.75rem;">Forgot Password?</a>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
             </div>
-            <button type="submit" class="btn-auth-submit" id="registerBtn">Sign up</button>
+
+            <button type="submit" class="btn-auth-submit" id="loginBtn">Sign in</button>
         </form>
         
-<<<<<<<< HEAD:uploads/register.php
-        <div class="auth-links-group" style="margin-top: 0.5rem;">
-            <p>Already have an account? <a href="login.php">Log in</a></p>
-========
         <div class="divider"><span>OR CONTINUE WITH</span></div>
 
         <div class="auth-social">
@@ -383,14 +326,10 @@ body::before {
 
         <div class="auth-links-group" style="margin-top: 1rem;">
             <p>Don't have an account? <a href="register.php">Create Account</a></p>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
         </div>
     </div>
 </div>
 
-<<<<<<<< HEAD:uploads/register.php
-<?php include 'includes/footer.php'; ?>
-========
 <script>
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -440,5 +379,3 @@ document.addEventListener('click', function(e) {
 </script>
 </body>
 </html>
->>>>>>>> origin/Suraj-K.Sah:uploads/login.php
->>>>>>> origin/Suraj-K.Sah

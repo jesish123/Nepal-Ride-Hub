@@ -9,7 +9,13 @@
                 <h4>Quick Links</h4>
                 <a href="index.php">Home</a>
                 <a href="vehicles.php">Browse Vehicles</a>
+<<<<<<< HEAD
                 <a href="register.php">Become a Member</a>
+=======
+                <a href="about.php">About Us</a>
+                <a href="blog.php">Latest Blog</a>
+                <a href="contact.php">Contact Us</a>
+>>>>>>> origin/seraj
             </div>
             <div class="footer-contact">
                 <h4>Contact Support</h4>
@@ -22,6 +28,10 @@
             <p>&copy; <?php echo date('Y'); ?> Nepal Ride Hub. All rights reserved.</p>
         </div>
     </footer>
+<<<<<<< HEAD
     <script src="js/script.js"></script>
+=======
+    <script src="js/script.js?v=<?php echo time(); ?>"></script>
+>>>>>>> origin/seraj
 </body>
 </html>

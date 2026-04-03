@@ -43,9 +43,15 @@ if (session_status() === PHP_SESSION_NONE) {
             <ul class="nav-links-right" style="margin: 0; padding: 0; display: flex; align-items: center; gap: 2rem;">
                 <li><a href="index.php" class="nav-item">Home</a></li>
                 <li><a href="vehicles.php" class="nav-item">Rent a car</a></li>
+<<<<<<< HEAD
                 <li><a href="#" class="nav-item">Blog</a></li>
                 <li><a href="#" class="nav-item">About us</a></li>
                 <li><a href="#" class="nav-item">Contact us</a></li>
+=======
+                <li><a href="blog.php" class="nav-item">Blog</a></li>
+                <li><a href="about.php" class="nav-item">About us</a></li>
+                <li><a href="contact.php" class="nav-item">Contact us</a></li>
+>>>>>>> origin/seraj
                 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="user-profile-dropdown" style="position: relative; list-style: none;">
@@ -56,7 +62,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         </div>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 12px; min-width: 180px; z-index: 100; margin-top: 0.5rem; border: 1px solid #eee;">
+<<<<<<< HEAD
                             <a href="profile.php" style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;">My Profile</a>
+=======
+                            <a href="user_details.php" style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;">User Details</a>
+                            <a href="profile.php" style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;">Edit Profile</a>
+>>>>>>> origin/seraj
                             <a href="<?php echo ($_SESSION['role']==='admin'?'admin_dashboard.php':'customer_dashboard.php'); ?>" style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;">Dashboard</a>
                             <a href="api/auth.php?action=logout" style="display: block; padding: 0.8rem 1.2rem; color: #da291c; text-decoration: none; font-weight: 600;">Logout</a>
                         </div>

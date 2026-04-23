@@ -27,13 +27,7 @@ if (!isset($_SESSION['temp_user_id']) || !isset($_SESSION['verification_code']))
                 <p>Didn't receive the email? Check your spam folder or <a href="login.php">login again</a>.</p>
             </div>
 
-            <?php
-            // FOR DEVELOPMENT ONLY: Show the code on screen if XAMPP mail is not configured.
-            // In a real production environment, the mail() function handles this, and you would remove this block.
-            echo '<div style="margin-top: 1.5rem; padding: 1rem; background: #fff3cd; color: #856404; font-size: 0.85rem; border-radius: 4px;">';
-            echo '<strong>Local Testing Note:</strong> Since XAMPP may not have an SMTP server configured to send real emails, your verification code is: <strong>' . $_SESSION['verification_code'] . '</strong>';
-            echo '</div>';
-            ?>
+
         </div>
     </div>
 </section>

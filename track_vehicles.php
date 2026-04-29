@@ -7,55 +7,58 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 $isAdmin = ($_SESSION['role'] === 'admin');
 ?>
 
-<section style="background: #1a1a1a; color: #fff; min-height: 90vh; display: flex; flex-direction: column;">
-    <div style="padding: 1rem 2rem; background: #222; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center;">
+<section style="background: #f8f9fa; color: #111; min-height: 90vh; display: flex; flex-direction: column;">
+    <div style="padding: 1.5rem 2rem; background: #fff; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
         <div>
-            <h2 style="margin: 0; color: #fff; font-size: 1.5rem;"><i class="fas fa-satellite-dish" style="color: var(--primary-red);"></i> Live Fleet Tracking</h2>
-            <p style="margin: 0; font-size: 0.8rem; color: #888;">Monitoring all active customer trips across Nepal</p>
+            <h2 style="margin: 0; color: #111; font-size: 1.5rem; font-weight: 800;"><i class="fas fa-satellite-dish" style="color: #3561ff;"></i> Live Fleet Tracking</h2>
+            <p style="margin: 0; font-size: 0.85rem; color: #666;">Monitoring all active customer trips across Nepal</p>
         </div>
         <div style="display: flex; gap: 1rem;">
-            <div id="connectionStatus" style="font-size: 0.85rem; background: #2d2d2d; padding: 0.5rem 1rem; border-radius: 50px; display: flex; align-items: center; gap: 0.5rem;">
-                <span style="width: 8px; height: 8px; background: #28a745; border-radius: 50%;"></span> Live
+            <div id="connectionStatus" style="font-size: 0.85rem; background: #eef2ff; color: #3561ff; padding: 0.5rem 1.2rem; border-radius: 50px; display: flex; align-items: center; gap: 0.6rem; font-weight: 700;">
+                <span style="width: 10px; height: 10px; background: #28a745; border-radius: 50%; box-shadow: 0 0 10px rgba(40,167,69,0.4);"></span> Live System
             </div>
-            <a href="<?php echo $isAdmin ? 'admin_dashboard.php' : 'customer_dashboard.php'; ?>" class="btn btn-outline" style="border-color: #444; color: #ccc;">Back to Dashboard</a>
+            <a href="<?php echo $isAdmin ? 'admin_dashboard.php' : 'customer_dashboard.php'; ?>" class="btn-blue-solid" style="padding: 0.6rem 1.5rem; font-size: 0.9rem; text-decoration: none;">Back to Dashboard</a>
         </div>
     </div>
 
     <div style="display: flex; flex: 1; overflow: hidden;">
         <!-- Trip Sidebar -->
-        <div style="width: 350px; background: #222; border-right: 1px solid #333; overflow-y: auto; padding: 1.5rem;">
-            <h4 style="margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: #666;">Active Trips</h4>
-            <div id="tripList" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div style="width: 360px; background: #fff; border-right: 1px solid #eee; overflow-y: auto; padding: 2rem; box-shadow: 10px 0 30px rgba(0,0,0,0.02);">
+            <h4 style="margin-bottom: 1.5rem; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1.5px; color: #999; font-weight: 700;">Active Trips</h4>
+            <div id="tripList" style="display: flex; flex-direction: column; gap: 1.2rem;">
                 <!-- Loaded dynamically -->
-                <div style="color: #444; text-align: center; padding: 2rem;">Searching for active trips...</div>
+                <div style="color: #999; text-align: center; padding: 3rem; font-size: 0.9rem;">
+                    <i class="fas fa-circle-notch fa-spin" style="font-size: 1.5rem; margin-bottom: 1rem; display: block; color: #3561ff;"></i>
+                    Connecting to fleet...
+                </div>
             </div>
 
-            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
-                <p style="font-size: 0.75rem; color: #666; margin-bottom: 1rem;">🛠️ Maintenance Tools</p>
-                <a href="seed_coordinates.php" target="_blank" class="btn btn-outline btn-block" style="border-color: #444; color: #ccc; font-size: 0.8rem; text-align: left;">
-                    <i class="fas fa-sync"></i> Sync Sample GPS Data
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #f0f0f0;">
+                <p style="font-size: 0.75rem; color: #aaa; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Admin Controls</p>
+                <a href="seed_coordinates.php" target="_blank" class="btn btn-outline btn-block" style="font-size: 0.85rem; text-align: left; padding: 0.8rem 1rem; border-radius: 8px; border-color: #eee; color: #444; margin-bottom: 0.8rem;">
+                    <i class="fas fa-sync" style="color: #3561ff;"></i> Sync Sample GPS Data
                 </a>
-                <button onclick="loadActiveTrips()" class="btn btn-outline btn-block" style="border-color: #444; color: #ccc; font-size: 0.8rem; text-align: left; margin-top: 0.5rem;">
-                    <i class="fas fa-rotate-right"></i> Force Refresh
+                <button onclick="loadActiveTrips()" class="btn btn-outline btn-block" style="font-size: 0.85rem; text-align: left; padding: 0.8rem 1rem; border-radius: 8px; border-color: #eee; color: #444;">
+                    <i class="fas fa-rotate-right" style="color: #3561ff;"></i> Force Refresh
                 </button>
             </div>
         </div>
 
         <!-- Map Container -->
-        <div style="flex: 1; position: relative;">
-            <div id="map" style="width: 100%; height: 100%; background: #1a1a1a;"></div>
+        <div style="flex: 1; position: relative; background: #f0f2f5;">
+            <div id="map" style="width: 100%; height: 100%;"></div>
             
             <!-- Map Overlay -->
-            <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(34,34,34,0.9); padding: 1rem; border-radius: 8px; border: 1px solid #444; backdrop-filter: blur(5px);">
-                <div style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">FLEET SUMMARY</div>
-                <div style="display: flex; gap: 2rem;">
+            <div style="position: absolute; bottom: 30px; right: 30px; background: rgba(255,255,255,0.95); padding: 1.2rem 1.8rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.8); backdrop-filter: blur(10px); z-index: 1000;">
+                <div style="font-size: 0.75rem; color: #999; margin-bottom: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Fleet Status</div>
+                <div style="display: flex; gap: 2.5rem;">
                     <div>
-                        <div id="activeCount" style="font-size: 1.5rem; font-weight: 800;">0</div>
-                        <div style="font-size: 0.7rem; color: #666;">VEHICLES</div>
+                        <div id="activeCount" style="font-size: 1.8rem; font-weight: 800; color: #111;">0</div>
+                        <div style="font-size: 0.75rem; color: #666; font-weight: 600;">ACTIVE</div>
                     </div>
                     <div>
-                        <div id="movingCount" style="font-size: 1.5rem; font-weight: 800;">0</div>
-                        <div style="font-size: 0.7rem; color: #666;">MOVING</div>
+                        <div id="movingCount" style="font-size: 1.8rem; font-weight: 800; color: #3561ff;">0</div>
+                        <div style="font-size: 0.75rem; color: #666; font-weight: 600;">MOVING</div>
                     </div>
                 </div>
             </div>
@@ -96,8 +99,8 @@ $isAdmin = ($_SESSION['role'] === 'admin');
             zoomControl: false // Move zoom control if needed, but we'll hide for premium look
         }).setView([28.3949, 84.1240], 8);
 
-        // CartoDB Dark Matter (Premium Dark Theme)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        // CartoDB Voyager (Premium Light Theme)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
@@ -165,10 +168,12 @@ $isAdmin = ($_SESSION['role'] === 'admin');
         const list = document.getElementById('tripList');
         if (activeTrips.length === 0) {
             list.innerHTML = `
-                <div style="color: #444; text-align: center; padding: 2rem;">
-                    <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.3;"></i>
-                    No vehicles currently in transit.<br>
-                    <small style="display: block; margin-top: 1rem; color: #666;">Make sure you have <strong>'pending'</strong> or <strong>'confirmed'</strong> bookings.</small>
+                <div style="color: #bbb; text-align: center; padding: 4rem 1rem;">
+                    <div style="width: 60px; height: 60px; background: #f8f9fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-search" style="font-size: 1.5rem; color: #ddd;"></i>
+                    </div>
+                    <p style="font-weight: 600; color: #888; margin-bottom: 0.5rem;">No active vehicles</p>
+                    <p style="font-size: 0.8rem; color: #aaa; line-height: 1.4;">Make sure you have <strong>'pending'</strong> or <strong>'confirmed'</strong> bookings to track.</p>
                 </div>`;
             return;
         }
@@ -179,27 +184,27 @@ $isAdmin = ($_SESSION['role'] === 'admin');
             
             return `
             <div onclick="${hasGps ? `focusTrip(${trip.booking_id})` : ''}" 
-                 style="background: #2d2d2d; padding: 1rem; border-radius: 8px; cursor: pointer; transition: 0.2s; border: 1px solid transparent; margin-bottom: 1rem; opacity: ${hasGps ? 1 : 0.6};" 
-                 onmouseover="this.style.borderColor='#444'" onmouseout="this.style.borderColor='transparent'">
-                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                    <div style="width: 40px; height: 40px; background: #444; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas ${getVehicleIcon(trip.vehicle_type)}" style="color: var(--primary-red);"></i>
+                 style="background: #fff; padding: 1.2rem; border-radius: 12px; cursor: pointer; transition: all 0.3s; border: 1px solid #f0f0f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); opacity: ${hasGps ? 1 : 0.6};" 
+                 onmouseover="this.style.borderColor='#3561ff'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='#f0f0f0'; this.style.transform='translateY(0)';">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <div style="width: 44px; height: 44px; background: #eef2ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas ${getVehicleIcon(trip.vehicle_type)}" style="color: #3561ff; font-size: 1.2rem;"></i>
                     </div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 600; font-size: 0.9rem;">${trip.vehicle_name}</div>
-                        <div style="font-size: 0.7rem; color: #888;">${trip.customer_name}</div>
+                    <div style="flex: 1; min-width: 0;">
+                        <div style="font-weight: 700; font-size: 0.95rem; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${trip.vehicle_name}</div>
+                        <div style="font-size: 0.75rem; color: #888; font-weight: 500;">${trip.customer_name}</div>
                     </div>
-                    <div style="background: ${hasGps ? statusColor : '#666'}; width: 8px; height: 8px; border-radius: 50%;"></div>
+                    <div style="background: ${hasGps ? statusColor : '#ddd'}; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 5px rgba(0,0,0,0.1);"></div>
                 </div>
-                <div style="font-size: 0.7rem; color: #888; display: flex; justify-content: space-between;">
-                    <span>
+                <div style="font-size: 0.75rem; color: #666; display: flex; justify-content: space-between; align-items: center; padding-top: 0.8rem; border-top: 1px dashed #f0f0f0;">
+                    <span style="font-weight: 500;">
                         ${hasGps 
-                            ? `<i class="fas fa-map-marker-alt"></i> ${parseFloat(trip.gps_lat).toFixed(4)}, ${parseFloat(trip.gps_lng).toFixed(4)}` 
-                            : `<i class="fas fa-satellite-dish"></i> <span style="color:#d9534f;">SIGNAL LOST</span>`
+                            ? `<i class="fas fa-location-dot" style="color: #3561ff; margin-right: 4px;"></i> ${parseFloat(trip.gps_lat).toFixed(4)}, ${parseFloat(trip.gps_lng).toFixed(4)}` 
+                            : `<i class="fas fa-circle-exclamation" style="color: #dc3545; margin-right: 4px;"></i> SIGNAL LOST`
                         }
                     </span>
-                    <span style="color: ${statusColor};">
-                        <i class="fas fa-circle" style="font-size: 0.4rem;"></i> ${trip.booking_status.toUpperCase()}
+                    <span style="color: ${statusColor}; font-weight: 700; font-size: 0.7rem;">
+                        ${trip.booking_status.toUpperCase()}
                     </span>
                 </div>
             </div>
@@ -230,11 +235,11 @@ $isAdmin = ($_SESSION['role'] === 'admin');
                 // Create custom icon
                 const myIcon = L.divIcon({
                     className: 'custom-div-icon',
-                    html: `<div style="background-color: var(--primary-red); color: white; border: 2px solid white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
-                             <i class="fas ${getVehicleIcon(trip.vehicle_type)}" style="font-size: 14px;"></i>
+                    html: `<div style="background-color: #3561ff; color: white; border: 3px solid white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(53,97,255,0.4);">
+                             <i class="fas ${getVehicleIcon(trip.vehicle_type)}" style="font-size: 16px;"></i>
                            </div>`,
-                    iconSize: [30, 30],
-                    iconAnchor: [15, 15]
+                    iconSize: [34, 34],
+                    iconAnchor: [17, 17]
                 });
 
                 markers[trip.vehicle_id] = L.marker(pos, { icon: myIcon }).addTo(map);

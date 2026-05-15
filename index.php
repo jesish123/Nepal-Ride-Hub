@@ -1,3 +1,15 @@
+<?php
+include 'includes/header.php';
+require_once 'includes/db_connect.php';
+
+try {
+    $stmtVehicles = $pdo->query("SELECT * FROM vehicles WHERE status = 'available' ORDER BY created_at DESC LIMIT 3");
+    $featuredVehicles = $stmtVehicles->fetchAll();
+} catch (PDOException $e) {
+    $featuredVehicles = [];
+}
+?>
+
 <style>
     /* Reset and Base Overrides for Mockup */
     .hero-wrapper {
@@ -207,9 +219,11 @@
                     <li><i class="fa-solid fa-check"></i> GPS Tracking Available</li>
                     <li><i class="fa-solid fa-check"></i> Wide Range of Vehicles</li>
                 </ul>
-                <a href="vehicles.php" class="btn-blue-solid"
-                    style="padding: 1.2rem 2.8rem; border-radius: 12px; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(53,97,255,0.3);">Explore
-                    Vehicles</a>
+                <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'): ?>
+                    <a href="vehicles.php" class="btn-blue-solid"
+                        style="padding: 1.2rem 2.8rem; border-radius: 12px; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(53,97,255,0.3);">Explore
+                        Vehicles</a>
+                <?php endif; ?>
             </div>
             <div class="hero-right">
                 <div class="hero-carousel">
@@ -252,6 +266,7 @@
     </div>
 </div>
 
+<?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'): ?>
 <section style="padding: 4rem 0; background: var(--light-bg);">
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
@@ -274,7 +289,9 @@
                         <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
                             <div
                                 style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
-                                <h3><?php echo htmlspecialchars($v['name']); ?></h3>
+                                <h3>
+                                    <?php echo htmlspecialchars($v['name']); ?>
+                                </h3>
                                 <div>
                                     <span
                                         style="background: var(--light-bg); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid var(--border-color); margin-right: 0.2rem;">
@@ -282,16 +299,19 @@
                                     </span>
                                     <span
                                         style="background: #eef2f3; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; border: 1px solid #ced4da; color: #495057;">
-                                        <i class="fas fa-route"></i> <?php echo ucfirst($v['condition_type'] ?? 'city'); ?>
+                                        <i class="fas fa-route"></i>
+                                        <?php echo ucfirst($v['condition_type'] ?? 'city'); ?>
                                     </span>
                                 </div>
                             </div>
                             <p style="color: var(--gray-text); margin-bottom: 1rem; font-size: 0.9rem;">
-                                <?php echo htmlspecialchars($v['brand']); ?> &bull; <?php echo $v['model_year']; ?>
+                                <?php echo htmlspecialchars($v['brand']); ?> &bull;
+                                <?php echo $v['model_year']; ?>
                             </p>
                             <div style="margin-bottom: 1.5rem;">
                                 <span style="font-size: 1.4rem; font-weight: 700; color: var(--primary-red);">Rs.
-                                    <?php echo $v['price_per_day']; ?></span>
+                                    <?php echo $v['price_per_day']; ?>
+                                </span>
                                 <span style="color: var(--gray-text); font-size: 0.9rem;">/ day</span>
                             </div>
                             <div style="margin-top: auto;">
@@ -305,6 +325,7 @@
         <?php endif; ?>
     </div>
 </section>
+<?php endif; ?>
 
 <section style="padding: 4rem 0;">
     <div class="container">
@@ -361,3 +382,4 @@
 
 </script>
 
+<?php include 'includes/footer.php'; ?>

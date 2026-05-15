@@ -94,4 +94,18 @@ if (isset($_GET['code'])) {
     header("Location: ../login.php");
     exit;
 }
+function showSetupHelp($provider) {
+    echo "
+    <div style='text-align:center; margin-top:100px; font-family:\"Inter\", sans-serif;'>
+        <h1 style='color:#3561ff; font-weight:800;'>Nepal Ride Hub - Social Auth</h1>
+        <div style='max-width:500px; margin: 0 auto; background:#f9f9f9; padding:2rem; border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,0.1);'>
+            <h3 style='margin-top:0;'>Setup Required for $provider</h3>
+            <p style='color:#666;'>Your <code>api/oauth_$provider.php</code> file is currently using placeholder Client IDs.</p>
+            <p style='color:#666;'>To use the real login, please replace the <code>YOUR_...</code> variables in that file with actual credentials from the developer console.</p>
+            
+            <a href='oauth_".strtolower($provider).".php?simulate=1' style='display:block; padding:12px; background:#4267B2; color:#fff; text-decoration:none; border-radius:8px; font-weight:700; margin-top:1.5rem;'>Proceed with Simulated Login</a>
+            <a href='../login.php' style='display:block; color:#aaa; margin-top:1rem; text-decoration:none; font-size:0.9rem;'>Cancel</a>
+        </div>
+    </div>";
+}
 ?>

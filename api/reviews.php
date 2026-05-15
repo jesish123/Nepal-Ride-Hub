@@ -183,7 +183,7 @@ if ($action === 'moderate') {
     exit;
 }
 
-// Admin Reply (New Action) 
+// ── Admin Reply (New Action) ────────────────────────────────────────────────
 if ($action === 'reply') {
     if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
         http_response_code(403);
@@ -211,7 +211,7 @@ if ($action === 'reply') {
     exit;
 }
 
-//  List Reviews (Admin) 
+// ── List Reviews (Admin) ────────────────────────────────────────────────────
 if ($action === 'list') {
     if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
         http_response_code(403);

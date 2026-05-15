@@ -1,5 +1,9 @@
 <?php
 include 'includes/header.php';
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+    header('Location: manage_vehicles_ui.php');
+    exit;
+}
 require_once 'includes/db_connect.php';
 
 $id = (int) ($_GET['id'] ?? 0);

@@ -1,9 +1,12 @@
 <?php
-include 'includes/header.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'customer') {
     header('Location: login.php');
     exit;
 }
+include 'includes/header.php';
 require_once 'includes/db_connect.php';
 
 $userId = $_SESSION['user_id'];

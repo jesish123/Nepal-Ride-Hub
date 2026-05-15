@@ -5,7 +5,7 @@
  * This script ensures the site_reviews table exists and has all required columns.
  */
 
-require_once '../includes/db_connect.php';
+require_once 'includes/db_connect.php';
 
 try {
     // 1. Create or Update site_reviews table

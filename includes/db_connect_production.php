@@ -6,7 +6,9 @@
  * Host: sql111.infinityfree.com
  * User: if0_41924868
  * Pass: SaHID786
- * Database: if0_41924868_nepal_ride_hub
+ * 
+ * IMPORTANT: You MUST create a database named 'nepal_ride_hub' in your 
+ * InfinityFree Control Panel first. It will be named 'if0_41924868_nepal_ride_hub'.
  */
 
 $host = 'sql111.infinityfree.com';
@@ -15,7 +17,8 @@ $username = 'if0_41924868';
 $password = 'SaHID786';
 
 try {
-    // Note: On InfinityFree, we connect directly to the database you created.
+    // Note: On InfinityFree, we don't use CREATE DATABASE IF NOT EXISTS 
+    // as it is restricted. We connect directly to the database you created.
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

@@ -150,6 +150,8 @@ elseif ($action === 'update_profile' && $isPost) {
 
         // Update session name for the header
         $_SESSION['name'] = $name;
+        $_SESSION['email'] = $email;
+        $_SESSION['phone'] = $phone;
 
         echo json_encode(['success' => true, 'message' => 'Profile updated successfully!']);
     } catch (PDOException $e) {

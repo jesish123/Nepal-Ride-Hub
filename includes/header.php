@@ -1,3 +1,9 @@
+<?php
+// includes/header.php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +17,77 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Outfit:ital,wght@0,400;0,600;0,800;1,800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
+    <style>
+        @media (max-width: 992px) {
+            .mobile-menu-btn {
+                display: block !important;
+                background: none;
+                border: none;
+                color: #111;
+                font-size: 1.8rem;
+                cursor: pointer;
+                z-index: 1002;
+            }
+            .nav-links-right {
+                display: none !important;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 1001;
+            }
+            .nav-links-right.active {
+                display: flex !important;
+            }
+            .top-bar-email {
+                display: none !important;
+            }
+            .top-bar-container {
+                justify-content: center !important;
+            }
+        }
+    </style>
+    <script>
+        window.CHATBOT_USER = <?php
+        if (!empty($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+            echo json_encode([
+                'logged_in' => true,
+                'role'      => 'admin',
+                'name'      => $_SESSION['name'] ?? 'Admin',
+                'email'     => $_SESSION['email'] ?? '',
+                'id'        => $_SESSION['user_id'] ?? '',
+            ]);
+        } elseif (!empty($_SESSION['user_id'])) {
+            echo json_encode([
+                'logged_in' => true,
+                'role'      => 'user',
+                'name'      => $_SESSION['name'] ?? '',
+                'email'     => $_SESSION['email'] ?? '',
+                'phone'     => $_SESSION['phone'] ?? '',
+                'id'        => $_SESSION['user_id'],
+            ]);
+        } else {
+            echo json_encode(['logged_in' => false]);
+        }
+        ?>;
+    </script>
 </head>
 
 <body>
     <div class="top-bar">
         <div class="container top-bar-container">
             <div>
-                <a href="tel:01-234567" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-phone"></i> 01-234567</a>
+                <a href="tel:01-234567" style="color: inherit; text-decoration: none;"><i class="fa-solid fa-phone-volume"></i>
+                    01-234567</a>
             </div>
-            <div>
-                <a href="mailto:info@nepalridehub.org" style="color: inherit; text-decoration: none;"><i class="fa-regular fa-envelope"></i> info@nepalridehub.org</a>
+            <div class="top-bar-email">
+                <a href="mailto:info@nepalridehub.org" style="color: inherit; text-decoration: none;"><i
+                        class="fa-regular fa-envelope"></i> info@nepalridehub.org</a>
             </div>
         </div>
     </div>
@@ -38,15 +104,19 @@
                 </div>
             </a>
 
-            <ul class="nav-links-right" style="margin: 0; padding: 0; display: flex; align-items: center; gap: 2rem;">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links-right" id="navLinks">
                 <li><a href="index.php" class="nav-item">Home</a></li>
                 <li><a href="vehicles.php" class="nav-item">Rent a car</a></li>
 
                 <li><a href="reviews.php" class="nav-item">Reviews</a></li>
                 <li><a href="about.php" class="nav-item">About us</a></li>
                 <li><a href="contact.php" class="nav-item">Contact us</a></li>
-                <li><a href="emergency.php" class="nav-item" style="color: #dc3545; font-weight: 800;"><i
-                            class="fas fa-triangle-exclamation"></i> Emergency</a></li>
+                <li><a href="emergency.php" class="nav-item" style="color: #3561ff; font-weight: 800;"><i
+                            class="fas fa-phone-volume"></i> Emergency</a></li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="user-profile-dropdown" style="position: relative; list-style: none;">
@@ -56,7 +126,7 @@
                                 alt="User" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
                             <span
                                 style="font-weight: 700; color: #111; font-size: 0.95rem;"><?php echo htmlspecialchars($_SESSION['name']); ?></span>
-                            <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; color: #888;"></i>
+                                <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; color: #888;"></i>
                         </div>
                         <!-- Dropdown menu -->
                         <div class="dropdown-menu"
@@ -69,7 +139,9 @@
                                 Profile</a>
                             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                                 <a href="track_vehicles.php"
-                                    style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;"><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: #3561ff;"></i>Live Tracking</a>
+                                    style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;"><i
+                                        class="fa-solid fa-location-dot" style="margin-right: 8px; color: #3561ff;"></i>Live
+                                    Tracking</a>
                             <?php endif; ?>
                             <a href="<?php echo ($_SESSION['role'] === 'admin' ? 'admin_dashboard.php' : 'customer_dashboard.php'); ?>"
                                 style="display: block; padding: 0.8rem 1.2rem; color: #333; text-decoration: none; border-bottom: 1px solid #eee; font-weight: 600;">Dashboard</a>
@@ -86,4 +158,31 @@
             </ul>
         </div>
     </nav>
+
+    <script>
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('navLinks');
+            const icon = this.querySelector('i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Toggle User Dropdown on Mobile
+        const userDropdown = document.querySelector('.user-profile-dropdown');
+        if (userDropdown) {
+            userDropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    const menu = this.querySelector('.dropdown-menu');
+                    const isVisible = menu.style.display === 'block';
+                    menu.style.display = isVisible ? 'none' : 'block';
+                }
+            });
+        }
+    </script>
     <main>
